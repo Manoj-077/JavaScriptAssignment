@@ -1,0 +1,15 @@
+body{
+    margin:0;
+}
+h1{
+    margin-left: 20px;
+}
+#ar{
+    margin-right: 70px;
+}
+#controls{
+    text-align : right;
+}
+#search{
+    margin-right: 50px;
+}
