@@ -1,0 +1,80 @@
+body{
+    margin: 0;
+}
+#body{
+    text-align: center;
+    background-color: rgb(220, 255, 231);
+}
+#header{
+    background-color: rgb(108, 108, 197);
+    height: 110px;
+}
+#footer{
+    text-align: center;
+    height: 100px;
+    background-color: rgb(170, 255, 255);
+}
+
+#logo{
+    display: inline-block;
+    position: absolute;
+    height: 110px;
+    left: 0;
+}
+
+#headername{
+    display: block;
+    padding-top: 35px;
+    text-align: center;
+    margin:0;
+    font-size: 37px;
+    /*font-family: 'Red Hat Display', sans-serif;*/
+    font-family: 'Karla', sans-serif;
+    color: aliceblue;
+}
+
+#static{
+    width: 1520px;
+}
+
+.g{
+    display: inline-block;
+    position: relative;
+    right:auto;
+    left: auto;
+    margin-right: 90px;
+    margin-left: 90px;
+    bottom: 5px;
+    /*font-family: 'Signika', sans-serif;*/
+    font-family: 'Kanit', sans-serif;
+    color: rgb(66, 66, 176);
+}
+.g:hover{
+    color: rgb(104, 104, 255);
+}
+.fi{
+    height: 30px;
+    width: 30px;
+    position: relative;
+    display: inline-block;
+    margin : 0 40px 0 40px;
+    top:40px;
+}
+
+
+span{
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(220, 255, 231);
+}
+
+span:hover{
+    background-color: rgb(255, 232, 103);
+    border-style: groove;
+    
+}
+
+p{
+    font-family: 'Poppins', sans-serif;
+    color: rgb(98, 98, 98);
+}
+
