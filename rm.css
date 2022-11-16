@@ -9,7 +9,41 @@ h1{
 }
 #controls{
     text-align : right;
+    margin-right: 60px;
 }
 #search{
     margin-right: 50px;
+}
+#pop{
+    visibility: hidden;
+    border-style: groove;
+    padding: 10px 10px 0 10px;
+    display: inline-block;
+    position: absolute;
+    left: 40%;
+    top:30%;
+}
+span{
+    color: red;
+}
+.b{
+    margin: 2px;
+
+}
+.of{
+    visibility: hidden;
+}
+#sc{
+    position: relative;
+    bottom: 45px;
+}
+.ret{
+    visibility: visible;
+}
+.pushup{
+    position: relative;
+    bottom: 45px; 
+}
+.ti{
+    padding-left: 7px;
 }

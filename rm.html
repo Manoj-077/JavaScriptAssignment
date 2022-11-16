@@ -12,12 +12,69 @@
         <h1>Reservation Management</h1>
     </div>
     <div id="controls">
-        <button id="ar">Add Reservation</button>
+        <button id="ar" onclick=showPop() >Add Reservation</button>
         <input id="si" type="number">
         <button id="search">search</button>
     </div>
-    <div>
-        
+    <div id="tab">
+        <div id="pop">
+            <table>
+                <tr>
+                    <td><label>Reservation ID<span>*</span></label></td>
+                    <td class="ti" ><input id="ri" type="number"></td>
+                </tr>    
+                <tr>
+                    <td><label>Car Name<span>*</span></label></td>
+                    <td class="ti" ><input id="cn" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label>Card ID<span>*</span></label></td>
+                    <td class="ti" ><input id="ci" type="number"></td>
+                </tr>
+                <tr>
+                    <td><label>First Name<span>*</span></label></td>
+                    <td class="ti" ><input id="fn" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label>Last Name<span>*</span></label></td>
+                    <td class="ti" ><input id="ln" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label>From(date)<span>*</span></label></td>
+                    <td class="ti" ><input id="fd" type="date"></td>
+                </tr>
+                <tr>
+                    <td><label>To(date)<span>*</span></label></td>
+                    <td class="ti" ><input id="td" type="date"></td>
+                </tr>
+                <tr>
+                    <td><label>Departure location</label></td>
+                    <td class="ti" ><input id="dl" type="text"></td>
+                </tr>
+                <tr>
+                    <td><label>Child Passenger</label></td>
+                    <td class="ti" ><input id="cp" type="checkbox"> </td>
+                    
+                </tr>
+                <tr>
+                    <td><label>IsReturn</label></td>
+                    <td class="ti" id="ir"><label>yes</label><input onclick=ret()  name="r" type="radio"><label>no</label><input  onclick=retd() name="r" type="radio"></td>
+                </tr>
+                <tr class="of">
+                    <td><label>Return location</label></td>
+                    <td class="ti" ><input id="rl" type="text"></td>
+                </tr>
+                <tr class="of">
+                    <td><label>Return date</label></td>
+                    <td class="ti" ><input id="rd" type="date"></td>
+                </tr>
+            </table>
+            <div id="sc">
+                <button class="b" onclick=getData() type="submit" >Save</button>
+                <button class="b" onclick=cancelPop()>Cancel</button>
+            </div>
+        </div>
     </div>
+    <script src="rm.js"></script>
 </body>
 </html>
