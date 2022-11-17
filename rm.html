@@ -9,16 +9,50 @@
 </head>
 <body>
     <div id="top">
-        <h1>Reservation Management</h1>
+        <h1 >Reservation Management</h1>
     </div>
     <div id="controls">
         <button id="ar" onclick=showPop() >Add Reservation</button>
         <input id="si" type="number">
-        <button id="search">search</button>
+        <button id="search" onclick=searchD()>search</button>
     </div>
     <div id="tab">
+        <div id="tabd">
+            <h1 id="nd">no data</h1>
+            <table id="tabm">
+                <tr >
+                    <th>ReservatioID</th>
+                    <th>CarName</th>
+                    <th>CarID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>From(Date)</th>
+                    <th>To(Date)</th>
+                    <th>DepartureLocation</th>
+                    <th>ChildPassenger</th>
+                    <th>ReturnLocation</th>
+                    <th>ReturnDate</th>
+                </tr> 
+            </table>
+            <table id="tabs">
+                <tr >
+                    <th>ReservatioID</th>
+                    <th>CarName</th>
+                    <th>CarID</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>From(Date)</th>
+                    <th>To(Date)</th>
+                    <th>DepartureLocation</th>
+                    <th>ChildPassenger</th>
+                    <th>ReturnLocation</th>
+                    <th>ReturnDate</th>
+                </tr> 
+            </table>
+        </div>    
         <div id="pop">
-            <table>
+            <table id="popt">
+                <button class="btn1" onclick=cancelPop() >x</button>
                 <tr>
                     <td><label>Reservation ID<span>*</span></label></td>
                     <td class="ti" ><input id="ri" type="number"></td>
@@ -73,6 +107,11 @@
                 <button class="b" onclick=getData() type="submit" >Save</button>
                 <button class="b" onclick=cancelPop()>Cancel</button>
             </div>
+            
+        </div>
+        <div id="errPop">
+            <h3 id="erm">err msg</h3>
+            <button id="okb" onclick="closeErpop()">ok</button>
         </div>
     </div>
     <script src="rm.js"></script>
