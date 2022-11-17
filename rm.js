@@ -1,4 +1,4 @@
-var ri1,ri2,obj,ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd,jobj,x1,x2,row,s,so,b,b1=0;
+var ri1,ri2,obj,ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd,jobj,x1,x2,row,s,so,b,b1=0,d1;
 
 function showData(){
     if(localStorage.length ==0){
@@ -23,6 +23,7 @@ function showData(){
             c9 = row.insertCell(8)
             c10 = row.insertCell(9)
             c11 = row.insertCell(10)
+            c12 = row.insertCell(11)
             c1.innerHTML = x2.reservationID;
             c2.innerHTML = x2.carName;
             c3.innerHTML = x2.carID;
@@ -34,6 +35,7 @@ function showData(){
             c9.innerHTML = x2.childPassenger;
             c10.innerHTML = x2.returnLocation;
             c11.innerHTML = x2.returnDate;
+            c12.innerHTML = "<a onclick = delet(this) href='rm.html' >delete</a>"
         }
     }
 }
@@ -56,6 +58,7 @@ function showData1(){
             c9 = row.insertCell(8)
             c10 = row.insertCell(9)
             c11 = row.insertCell(10)
+            c12 = row.insertCell(11)
             c1.innerHTML = x2.reservationID;
             c2.innerHTML = x2.carName;
             c3.innerHTML = x2.carID;
@@ -67,6 +70,14 @@ function showData1(){
             c9.innerHTML = x2.childPassenger;
             c10.innerHTML = x2.returnLocation;
             c11.innerHTML = x2.returnDate;
+            c12.innerHTML = "<a onclick = delet(this) >delete</a>";
+                
+}
+
+function delet(y){
+    var d1 = y.parentElement.parentElement.cells[0].innerHTML;
+    localStorage.removeItem(d1);
+    console.log(d1);
 }
 
 function searchD(){
@@ -111,9 +122,7 @@ function searchD(){
     }
     
     
-}
-
-
+}   
 
 function showPop(){
     document.getElementById("pop").style.visibility = "visible";
@@ -252,7 +261,7 @@ function getData(){
     jobj = JSON.stringify(obj);
     localStorage.setItem(ri,jobj);
     }
-    cancelPop();
+    cancelPop();    
     showData1();
 }
 
