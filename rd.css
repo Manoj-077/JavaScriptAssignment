@@ -1,6 +1,9 @@
 body{
     margin: 0;
 }
+h2{
+ text-align: center;
+}
 .sd{
     height: 100px;
     width: 100px;

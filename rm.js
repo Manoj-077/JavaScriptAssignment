@@ -1,4 +1,4 @@
-var ri1,ri2,obj,ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd,jobj,x1,x2,row,s,so,b,b1=0,d1;
+var ri1,ri2,obj,ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd,jobj,x1,x2,row,s,so,b,b1=0,d1,e1,rl1=false,rd1=false;
 
 function showData(){
     if(localStorage.length ==0){
@@ -24,6 +24,7 @@ function showData(){
             c10 = row.insertCell(9)
             c11 = row.insertCell(10)
             c12 = row.insertCell(11)
+            c13 = row.insertCell(12)
             c1.innerHTML = x2.reservationID;
             c2.innerHTML = x2.carName;
             c3.innerHTML = x2.carID;
@@ -36,6 +37,7 @@ function showData(){
             c10.innerHTML = x2.returnLocation;
             c11.innerHTML = x2.returnDate;
             c12.innerHTML = "<a onclick = delet(this) href='rm.html' >delete</a>"
+            c13.innerHTML = "<a onclick = edit(this) >edit</a>"
         }
     }
 }
@@ -59,6 +61,7 @@ function showData1(){
             c10 = row.insertCell(9)
             c11 = row.insertCell(10)
             c12 = row.insertCell(11)
+            c13 = row.insertCell(12)
             c1.innerHTML = x2.reservationID;
             c2.innerHTML = x2.carName;
             c3.innerHTML = x2.carID;
@@ -70,16 +73,51 @@ function showData1(){
             c9.innerHTML = x2.childPassenger;
             c10.innerHTML = x2.returnLocation;
             c11.innerHTML = x2.returnDate;
-            c12.innerHTML = "<a onclick = delet(this) >delete</a>";
-                
+            c12.innerHTML = "<a onclick = delet(this) href='rm.html' >delete</a>";
+            c13.innerHTML = "<a onclick = edit(this) >edit</a>"
 }
 
 function delet(y){
-    var d1 = y.parentElement.parentElement.cells[0].innerHTML;
+    d1 = y.parentElement.parentElement.cells[0].innerHTML;
     localStorage.removeItem(d1);
     console.log(d1);
 }
-
+function edit(e){
+    e1 = e.parentElement.parentElement.cells[0].innerHTML;
+    showPop();
+    tp = JSON.parse(localStorage.getItem(e1));
+    document.getElementById("ri").value = tp.reservationID;
+    document.getElementById("cn").value = tp.carName;
+    document.getElementById("ci").value = tp.carID;
+    document.getElementById("fn").value = tp.firstName;
+    document.getElementById("ln").value = tp.lastName;
+    document.getElementById("fd").value = tp.fromD;
+    document.getElementById("td").value = tp.toD;
+    document.getElementById("dl").value = tp.departureLocation;
+    if(tp.childPassenger=="yes"){
+        document.getElementById("cp").checked = true;
+    } 
+    else{
+        
+    }
+    if(typeof(tp.returnLocation)=='string'){
+        document.getElementById("ir1").checked = true;
+        document.getElementById("rl").value = tp.returnLocation;
+        document.getElementById("rd").value = tp.returnDate;
+        ret();
+    }
+    else{
+        document.getElementById("rl").value = "";
+        document.getElementById("rd").value = "";
+        document.getElementById("ir2").checked = true;
+    }
+    document.getElementsByClassName("btn1")[0].addEventListener("click",function(){
+        document.getElementsByClassName("of")[0].style.visibility = "hidden";
+        document.getElementsByClassName("of")[1].style.visibility = "hidden";
+    });
+    
+    
+}
 function searchD(){
     s = document.getElementById("si").value;
     for (let r = 0; r<localStorage.length;r++){
@@ -102,6 +140,8 @@ function searchD(){
         c9 = row.insertCell(8)
         c10 = row.insertCell(9)
         c11 = row.insertCell(10)
+        c12 = row.insertCell(11)
+        c13 = row.insertCell(12)
         c1.innerHTML = so.reservationID;
         c2.innerHTML = so.carName;
         c3.innerHTML = so.carID;
@@ -113,6 +153,8 @@ function searchD(){
         c9.innerHTML = so.childPassenger;
         c10.innerHTML = so.returnLocation;
         c11.innerHTML = so.returnDate;
+        c12.innerHTML = "<a onclick = delet(this) href='rm.html' >delete</a>";
+        c13.innerHTML = "<a onclick = edit(this) >edit</a>"
         document.getElementById("tabm").style.visibility = "hidden";
         document.getElementById("tabs").style.visibility = "visible";
 
@@ -151,9 +193,10 @@ function cancelPop(){
     document.getElementById("sc").style.visibility = "hidden";
     /*document.getElementById("sc").style.visibility = "hidden";
     document.getElementsByClassName("ti")[0].style.visibility = "hidden";
-    document.getElementsByClassName("ti")[1].style.visibility = "hidden";
+    document.getElementsByClassName("ti")[1].style.visibility = "hidden";*/
     document.getElementsByClassName("of")[0].style.visibility = "hidden";
-    document.getElementsByClassName("of")[1].style.visibility = "hidden";*/
+    document.getElementsByClassName("of")[1].style.visibility = "hidden";
+
 
 }
 function ret(){
@@ -214,6 +257,8 @@ function getData(){
         if(document.getElementById("ir1").checked ===true){
             rl = document.getElementById("rl").value;
             rd = document.getElementById("rd").value;
+            rl1 = true;
+            rd1 = true;
             if(rd < fd || rd>td ){
                 errPop("invalid retrun date");
                 {}
@@ -221,8 +266,9 @@ function getData(){
             } 
         }
         else{
-            rl = "-No data-"
-            rd = "-No data-"
+            rl = false;
+            rd = false;
+            
         }
         
             if(ri<1){
@@ -265,6 +311,7 @@ function getData(){
         }
         cancelPop();    
         showData1();
+        retd();
     }    
     else{
         errPop("id already exists ,enter different id")

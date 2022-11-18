@@ -50,8 +50,6 @@ span{
     padding: 10px 40px 30px 40px;
     
     border-style: double;
-
-
     margin: 0;
     position: absolute;
     top: 50%;
@@ -87,6 +85,9 @@ margin-top:10px;
     width: 100%;
     position:relative;
     bottom: 60px;
+    border: solid;
+    border-style: groove;
+    
 }
 
 #tabs{
