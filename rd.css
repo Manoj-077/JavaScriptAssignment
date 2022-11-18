@@ -1,0 +1,58 @@
+body{
+    margin: 0;
+}
+.sd{
+    height: 100px;
+    width: 100px;
+    background-color: aliceblue;
+    display: inline-block;
+    border: groove;
+    margin: 20px;
+    padding-bottom: 60px;
+}
+.ig{
+    height: 100px;
+    width: 100px;
+}
+
+#headername{
+    display: block;
+    padding-top: 35px;
+    text-align: center;
+    margin:0;
+    font-size: 37px;
+    /*font-family: 'Red Hat Display', sans-serif;*/
+    font-family: 'Noto Sans', sans-serif; 
+}
+
+#logo{
+    display: inline-block;
+    position: absolute;
+    height: 110px;
+    left: 0;
+}
+#rd{
+    position: relative;
+    top: 30px;
+}
+
+#container{
+    background-color: aquamarine;
+    height: 400px;
+    width: 1000px;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    top: 60px; 
+    bottom: 0; 
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+.dc{
+    text-align: center;
+    
+}
+p{
+    margin: 0;
+}

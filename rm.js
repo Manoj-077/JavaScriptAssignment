@@ -207,61 +207,67 @@ function getData(){
     fd = document.getElementById("fd").value;
     td = document.getElementById("td").value;
     dl = document.getElementById("dl").value;
-
     
-    if(document.getElementById("ir1").checked ===true){
-        rl = document.getElementById("rl").value;
-        rd = document.getElementById("rd").value;
-        if(rd < fd || rd>td ){
-            errPop("invalid retrun date");
-            {}
+    const isin = ri in localStorage;   
 
+    if(!isin){
+        if(document.getElementById("ir1").checked ===true){
+            rl = document.getElementById("rl").value;
+            rd = document.getElementById("rd").value;
+            if(rd < fd || rd>td ){
+                errPop("invalid retrun date");
+                {}
+
+            } 
+        }
+        else{
+            rl = "-No data-"
+            rd = "-No data-"
+        }
+        
+            if(ri<1){
+                errPop("invalid reservation id")
+                {}
+            }
+            if(ci<1){
+                errPop("invalid card id")
+                {}
+            }
+            if(cn[0]==" " ){
+                errPop("invalid car name")
+                {}
+            }
+            if(fn[0]==" " || ln[0]==" "){
+                errPop("invalid first name or last name")
+                {}
+            }
+            if(td<fd){
+                errPop("invalid input date (from and to)")
+                {} //for the from and to
+            } 
+        
+        
+        try{
+            cp = document.querySelector('input[type="checkbox"]:checked').value;
+            cp = "yes"
+
+            }
+        catch(e){
+                cp = "no"
+            }
+        if(ri =="" || cn=="" || ci==""){
+            errPop("cannot store data as mandatory inputs are empty")
         } 
-    }
+        else{   
+        obj = new Data(ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd);
+        jobj = JSON.stringify(obj);
+        localStorage.setItem(ri,jobj);
+        }
+        cancelPop();    
+        showData1();
+    }    
     else{
-        rl = "-No data-"
-        rd = "-No data-"
-    }
-    
-        if(ri<1){
-            errPop("invalid reservation id")
-            {}
-        }
-        if(ci<1){
-            errPop("invalid card id")
-            {}
-        }
-        if(cn[0]==" " ){
-            errPop("invalid car name")
-            {}
-        }
-        if(fn[0]==" " || ln[0]==" "){
-            errPop("invalid first name or last name")
-            {}
-        }
-        if(td<fd){
-            errPop("invalid input date (from and to)")
-            {} //for the from and to
-        } 
-       
-    
-    try{
-        cp = document.querySelector('input[type="checkbox"]:checked').value;
-        cp = "yes"
-
-        }
-    catch(e){
-            cp = "no"
-        }
-    if(ri =="" || cn=="" || ci==""){
-        errPop("cannot store data as mandatory inputs are empty")
-    } 
-    else{   
-    obj = new Data(ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd);
-    jobj = JSON.stringify(obj);
-    localStorage.setItem(ri,jobj);
-    }
-    cancelPop();    
-    showData1();
+        errPop("id already exists ,enter different id")
+    }    
 }
 

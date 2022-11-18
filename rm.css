@@ -96,6 +96,10 @@ margin-top:10px;
     top:0;
 }
 
+a{
+    text-decoration: none;
+}
+
 
 .btn1 {
     background: #ff0000;
