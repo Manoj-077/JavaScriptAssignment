@@ -1,4 +1,4 @@
-var ri1,ri2,obj,ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd,jobj,x1,x2,row,s,so,b,b1=0,d1,e1,rl1=false,rd1=false;
+var ri1,ri2,obj,ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd,jobj,x1,x2,row,s,so,b,b1=0,d1,e1,rl1=false,rd1=false,ae;
 
 function showData(){
     if(localStorage.length ==0){
@@ -220,6 +220,14 @@ function errPop(str){
 }
 function closeErpop(){
     document.getElementById("errPop").style.visibility = "hidden";
+    if(document.getElementById("ir1").checked == true){
+        ret();
+    }
+    else{
+        document.getElementById("sc").style.visibility = "visible";
+        document.getElementById('sc').style.marginTop = "45px";
+        document.getElementById('sc').style.marginTop = "0px"
+    }
 }
 
 function Data(reservationID,carName,carID,firstName,lastName,fromD,toD,departureLocation,childPassenger,returnLocation,returnDate){
@@ -236,9 +244,8 @@ function Data(reservationID,carName,carID,firstName,lastName,fromD,toD,departure
     this.returnDate = returnDate;
 }
 
-    
 
-function getData(){
+document.getElementById('sub1').addEventListener('click',function(c){
     document.getElementsByClassName("of")[0].style.visibility="hidden";
     document.getElementsByClassName("of")[1].style.visibility="hidden";
     document.getElementById('sc').style.visibility = "hidden";
@@ -250,7 +257,41 @@ function getData(){
     fd = document.getElementById("fd").value;
     td = document.getElementById("td").value;
     dl = document.getElementById("dl").value;
-    
+
+    ae = ri in localStorage; 
+    if(ri<1 || ri==" " || ae == true || ri.length==0){
+        errPop("invalid reservation id")
+        c.preventDefault();   
+    }
+    else if(ci<1 || ci==" " || ci.length==0){
+        errPop("invalid card id")
+        c.preventDefault();
+    }
+    else if(fn[0]==" " || fn.length==0){
+        errPop("invalid first name");
+        c.preventDefault();
+    }
+    else if(ln[0]==" " || ln.length==0){
+        errPop("invalid last name");
+        c.preventDefault();
+    }
+    else if(td<fd){
+        errPop("invalid from and to date");
+        c.preventDefault();
+    }
+    else if(document.getElementById("ir2").checked == true){
+        if(rd<fd || rd>td){
+            errPop("invalid return");
+            c.preventDefault();
+        }
+    }
+    else{
+        getData()
+    }
+
+});
+
+function getData(){
     const isin = ri in localStorage;   
 
     if(!isin){
@@ -271,7 +312,7 @@ function getData(){
             
         }
         
-            if(ri<1){
+          /* if(ri<1){
                 errPop("invalid reservation id")
                 {}
             }
@@ -290,16 +331,16 @@ function getData(){
             if(td<fd){
                 errPop("invalid input date (from and to)")
                 {} //for the from and to
-            } 
+            } */
         
         
         try{
             cp = document.querySelector('input[type="checkbox"]:checked').value;
-            cp = "yes"
+            cp = "yes";
 
             }
         catch(e){
-                cp = "no"
+                cp = "no" ;
             }
         if(ri =="" || cn=="" || ci==""){
             errPop("cannot store data as mandatory inputs are empty")

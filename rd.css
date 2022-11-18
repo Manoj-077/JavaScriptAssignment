@@ -10,7 +10,7 @@ h2{
     background-color: aliceblue;
     display: inline-block;
     border: groove;
-    margin: 20px;
+    margin: 20px 15px 20px 15px;
     padding-bottom: 60px;
 }
 .ig{
