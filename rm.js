@@ -279,10 +279,14 @@ document.getElementById('sub1').addEventListener('click',function(c){
         errPop("invalid from and to date");
         c.preventDefault();
     }
-    else if(document.getElementById("ir2").checked == true){
+    else if(document.getElementById("ir1").checked == true){
+        rd = document.getElementById('rd').value;
         if(rd<fd || rd>td){
             errPop("invalid return");
             c.preventDefault();
+        }
+        else{
+            getData()
         }
     }
     else{
