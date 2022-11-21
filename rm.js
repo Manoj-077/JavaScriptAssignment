@@ -186,7 +186,7 @@ function searchD(){
         c9.innerHTML = so.childPassenger;
         c10.innerHTML = so.returnLocation;
         c11.innerHTML = so.returnDate;
-        c12.innerHTML = "<a onclick = delet(this) href='rm.html' >delete</a>";
+        c12.innerHTML = "<a onclick = deletPop(this)  >delete</a>";
         c13.innerHTML = "<a onclick = edit(this) >edit</a>"
         document.getElementById("tabm").style.visibility = "hidden";
         document.getElementById("tabs").style.visibility = "visible";
@@ -266,9 +266,9 @@ function closeErpop(){
         document.getElementById('sc').style.marginTop = "0px"
         }
     }
-    else{
+    /*else{
         document.getElementById("sc").style.visibility = "hidden";
-    }
+    }*/
 }
 
 function Data(reservationID,carName,carID,firstName,lastName,fromD,toD,departureLocation,childPassenger,returnLocation,returnDate){
@@ -300,7 +300,7 @@ document.getElementById('sub1').addEventListener('click',function(c){
     dl = document.getElementById("dl").value;
 
     ae = ri in localStorage; 
-    if(ri<1 || ri==" " || ae == true || ri.length==0){
+    if(ri<1 || ri==" " || ae == true || ri.length==0){     // validations
         errPop("invalid reservation id")
         c.preventDefault();   
     }
