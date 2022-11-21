@@ -1,4 +1,20 @@
-var ri1,ri2,obj,ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd,jobj,x1,x2,row,s,so,b,b1=0,d1,e1,rl1=false,rd1=false,ae;
+var sp=0,ri1,ri2,obj,ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd,jobj,x1,x2,row,s,so,b,b1=0,d1,e1,rl1=false,rd1=false,ae;
+
+function borderAdder(){
+            c1.classList.add('tm');
+            c2.classList.add('tm');
+            c3.classList.add('tm');
+            c4.classList.add('tm');
+            c5.classList.add('tm');
+            c6.classList.add('tm');
+            c7.classList.add('tm');
+            c8.classList.add('tm');
+            c9.classList.add('tm');
+            c10.classList.add('tm');
+            c11.classList.add('tm');
+            c12.classList.add('tm');
+            c13.classList.add('tm');
+}
 
 function showData(){
     if(localStorage.length ==0){
@@ -36,14 +52,16 @@ function showData(){
             c9.innerHTML = x2.childPassenger;
             c10.innerHTML = x2.returnLocation;
             c11.innerHTML = x2.returnDate;
-            c12.innerHTML = "<a onclick = delet(this) href='rm.html' >delete</a>"
+            c12.innerHTML = "<a onclick = deletPop(this)  >delete</a>"
             c13.innerHTML = "<a onclick = edit(this) >edit</a>"
+            borderAdder();
         }
     }
 }
 showData();
 
-function showData1(){
+
+/*function showData1(){
             document.getElementById("tabm").style.visibility = "visible";
             document.getElementById("nd").style.visibility="hidden";
             x1 = localStorage.getItem(ri);
@@ -75,12 +93,27 @@ function showData1(){
             c11.innerHTML = x2.returnDate;
             c12.innerHTML = "<a onclick = delet(this) href='rm.html' >delete</a>";
             c13.innerHTML = "<a onclick = edit(this) >edit</a>"
-}
+            borderAdder();
+}*/
 
+function deletePopCancel(){
+    document.getElementById('deletPop').style.visibility = 'hidden';
+}
 function delet(y){
-    d1 = y.parentElement.parentElement.cells[0].innerHTML;
-    localStorage.removeItem(d1);
-    console.log(d1);
+    
+    deletPop();
+    
+}
+function deletPop(y){
+    document.getElementById('deletPop').style.visibility = 'visible';
+    document.getElementById('delok').addEventListener('click',function(){
+        d1 = y.parentElement.parentElement.cells[0].innerHTML;
+        localStorage.removeItem(d1);
+        console.log(d1);
+    })
+    document.getElementById('delcancel').addEventListener('click',function(){
+        deletePopCancel()
+    })
 }
 function edit(e){
     e1 = e.parentElement.parentElement.cells[0].innerHTML;
@@ -157,10 +190,13 @@ function searchD(){
         c13.innerHTML = "<a onclick = edit(this) >edit</a>"
         document.getElementById("tabm").style.visibility = "hidden";
         document.getElementById("tabs").style.visibility = "visible";
+        borderAdder();
 
     }
     else{
         errPop("No data found in the record")
+        document.getElementById("sc").style.visibility = "hidden";
+
     }
     
     
@@ -173,6 +209,7 @@ function showPop(){
     document.getElementsByClassName("ti")[1].style.visibility = "visible";*/
     document.getElementById("sc").style.visibility = "visible";
     document.getElementById('sc').style.marginTop = "0px";
+    sp = 1;
 }
 function cancelPop(){
     ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd = "";
@@ -220,13 +257,17 @@ function errPop(str){
 }
 function closeErpop(){
     document.getElementById("errPop").style.visibility = "hidden";
-    if(document.getElementById("ir1").checked == true){
+    if(sp===1){
+    if(document.getElementById("ir1").checked == true ){
         ret();
+        }
+    else {
+        document.getElementById("sc").style.visibility = "visible";
+        document.getElementById('sc').style.marginTop = "0px"
+        }
     }
     else{
-        document.getElementById("sc").style.visibility = "visible";
-        document.getElementById('sc').style.marginTop = "45px";
-        document.getElementById('sc').style.marginTop = "0px"
+        document.getElementById("sc").style.visibility = "hidden";
     }
 }
 
@@ -264,7 +305,7 @@ document.getElementById('sub1').addEventListener('click',function(c){
         c.preventDefault();   
     }
     else if(ci<1 || ci==" " || ci.length==0){
-        errPop("invalid card id")
+        errPop("invalid car id")
         c.preventDefault();
     }
     else if(fn[0]==" " || fn.length==0){
@@ -275,7 +316,7 @@ document.getElementById('sub1').addEventListener('click',function(c){
         errPop("invalid last name");
         c.preventDefault();
     }
-    else if(td<fd){
+    else if(td<fd || td=="" || fd=="" ){
         errPop("invalid from and to date");
         c.preventDefault();
     }
@@ -316,27 +357,6 @@ function getData(){
             
         }
         
-          /* if(ri<1){
-                errPop("invalid reservation id")
-                {}
-            }
-            if(ci<1){
-                errPop("invalid card id")
-                {}
-            }
-            if(cn[0]==" " ){
-                errPop("invalid car name")
-                {}
-            }
-            if(fn[0]==" " || ln[0]==" "){
-                errPop("invalid first name or last name")
-                {}
-            }
-            if(td<fd){
-                errPop("invalid input date (from and to)")
-                {} //for the from and to
-            } */
-        
         
         try{
             cp = document.querySelector('input[type="checkbox"]:checked').value;
@@ -355,7 +375,7 @@ function getData(){
         localStorage.setItem(ri,jobj);
         }
         cancelPop();    
-        showData1();
+        showData();
         retd();
     }    
     else{

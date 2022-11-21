@@ -6,10 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="rm.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria&family=Kanit:wght@300&family=Oswald&family=Poppins:wght@300&display=swap" rel="stylesheet">
 </head>
 <body>
     <div id="top">
-        <h1 >Reservation Management</h1>
+        <a href="homeScreen.html"><img src="imgs/cb.png" id="logo"></a>
+        <h1 id="title">Reservation Management</h1>
         
     </div>
     <div id="controls">
@@ -53,7 +55,7 @@
         </div>    
         <div id="pop">
             <table id="popt">
-                <button class="btn1" id="btn11" onclick=cancelPop()  >x</button>
+                <a href="rm.html"><button class="btn1" id="btn11" onclick=cancelPop() >x</button></a>
                 <tr>
                     <td><label>Reservation ID<span>*</span></label></td>
                     <td class="ti" ><input id="ri" required type="number"></td>
@@ -63,7 +65,7 @@
                     <td class="ti" ><input id="cn" type="text"></td>
                 </tr>
                 <tr>
-                    <td><label>Card ID<span>*</span></label></td>
+                    <td><label>Car ID<span>*</span></label></td>
                     <td class="ti" ><input id="ci" type="number"></td>
                 </tr>
                 <tr>
@@ -115,10 +117,15 @@
                 </tr>
             </table>
             <div id="sc">
-                <button class="b" id="sub1"  type="submit" >Save</button>
-                <button class="b" onclick=cancelPop()>Cancel</button>
+                <button class="b" id="sub1"  type="submit" ><a href="rm.html">Save</a></button>
+                <button class="b" onclick=cancelPop()><a href="rm.html">Cancel</a></button>
             </div>
             
+        </div>
+        <div id="deletPop">
+            <button id="delcancel"><a href="rm.html" id="cx">x</a></button>
+            <h3 id="delcon">confirm delete ?</h3>
+            <button id="delok"><a href="rm.html" id="dok">OK</a></button>
         </div>
         <div id="errPop">
             <h3 id="erm">err msg</h3>

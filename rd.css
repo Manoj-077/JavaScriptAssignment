@@ -1,5 +1,6 @@
 body{
     margin: 0;
+    background-color: rgb(171, 169, 233);
 }
 h2{
  text-align: center;
@@ -37,6 +38,7 @@ h2{
 #rd{
     position: relative;
     top: 30px;
+    font-family: 'Noto Sans', sans-serif; 
 }
 
 #container{

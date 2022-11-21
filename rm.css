@@ -1,14 +1,17 @@
 body{
     margin:0;
+    background-color: rgb(255, 251, 175);
 }
 h1{
     margin-left: 20px;
+    font-family: 'Alexandria', sans-serif;
 }
 h3{
     margin-top: 0;
 }
 #ar{
     margin-right: 70px;
+    font-family: 'Kanit', sans-serif;
 }
 #controls{
     text-align : right;
@@ -16,6 +19,7 @@ h3{
 }
 #search{
     margin-right: 50px;
+    font-family: 'Kanit', sans-serif;
 }
 #pop{
     visibility: hidden;
@@ -85,9 +89,27 @@ margin-top:10px;
     width: 100%;
     position:relative;
     bottom: 60px;
-    border: solid;
+    
     border-style: groove;
     
+}
+th{
+    border: solid;
+    border-collapse: collapse;
+    
+}
+#tabm,#tabs{
+    border: solid;
+    border-collapse: collapse;
+    font-family: 'Poppins', sans-serif;
+}
+td,.b{
+    font-family: 'Poppins', sans-serif;
+}
+.tm{
+    border-style: groove;
+    border-collapse: collapse;
+    font-family: 'Poppins', sans-serif;
 }
 
 #tabs{
@@ -101,8 +123,61 @@ a{
     text-decoration: none;
 }
 
+#si{
+    height: 20px;
+}
+#logo{
+    height: 120px;
+}
+#title{
+    display: inline-block;
+    position: relative;
+    bottom: 50px;
+    left: 250px;
+}
+#pop{
+    background-color: #64cbc7;
+}
+#deletPop{
+    height: 100px;
+    width: 180px;
+    left: 700px;
+    top: 280px;
+    display: inline-block;
+    position: absolute;
+    border-style: groove;
+    background-color: rgb(223, 223, 223);
+    visibility: hidden;
+}
+#delcon{
+    display: inline-block;
+    position: relative;
+    left: 25px;
+    top: 30px;
+    font-family: 'Karla', sans-serif;
+}
+#delcancel{
+    display: inline-block;
+    position: absolute;
+    right:10px
+}
+#cx{
+    color: aliceblue;
+}
+#delok{
+    display: inline-block;
+    position: absolute;
+    left: 75px;
+    bottom: 20px;
+    font-size: 12;
+    bottom: 15px;
+   
+}
+#dok{
+    color:  black;
+}
 
-.btn1 {
+.btn1,#delcancel {
     background: #ff0000;
     background-image: -webkit-linear-gradient(top, #ff0000, #ff0000);
     background-image: -moz-linear-gradient(top, #ff0000, #ff0000);
@@ -130,5 +205,79 @@ a{
     background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
     background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
     background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+    text-decoration: none;
+  }
+
+#ar {
+    background: #34d9a5;
+    background-image: -webkit-linear-gradient(top, #34d9a5, #82c4ed);
+    background-image: -moz-linear-gradient(top, #34d9a5, #82c4ed);
+    background-image: -ms-linear-gradient(top, #34d9a5, #82c4ed);
+    background-image: -o-linear-gradient(top, #34d9a5, #82c4ed);
+    background-image: linear-gradient(to bottom, #34d9a5, #82c4ed);
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    font-family: Courier New;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 8px 8px 10px 8px;
+    text-decoration: none;
+    border-style: none;
+  }
+  
+#ar:hover {
+    background: #c6fc3c;
+    background-image: -webkit-linear-gradient(top, #c6fc3c, #34c8d9);
+    background-image: -moz-linear-gradient(top, #c6fc3c, #34c8d9);
+    background-image: -ms-linear-gradient(top, #c6fc3c, #34c8d9);
+    background-image: -o-linear-gradient(top, #c6fc3c, #34c8d9);
+    background-image: linear-gradient(to bottom, #c6fc3c, #34c8d9);
+    text-decoration: none;
+  }
+
+#search {
+    background: #00b0aa;
+    background-image: -webkit-linear-gradient(top, #00b0aa, #93b9cf);
+    background-image: -moz-linear-gradient(top, #00b0aa, #93b9cf);
+    background-image: -ms-linear-gradient(top, #00b0aa, #93b9cf);
+    background-image: -o-linear-gradient(top, #00b0aa, #93b9cf);
+    background-image: linear-gradient(to bottom, #00b0aa, #93b9cf);
+    -webkit-border-radius: 10;
+    -moz-border-radius: 10;
+    border-radius: 10px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 14px;
+    padding: 5px 6px 6px 5px;
+    text-decoration: none;
+    border-style: none;
+  }
+  
+#search:hover {
+    background: #c6fc3c;
+    background-image: -webkit-linear-gradient(top, #c6fc3c, #34c8d9);
+    background-image: -moz-linear-gradient(top, #c6fc3c, #34c8d9);
+    background-image: -ms-linear-gradient(top, #c6fc3c, #34c8d9);
+    background-image: -o-linear-gradient(top, #c6fc3c, #34c8d9);
+    background-image: linear-gradient(to bottom, #c6fc3c, #34c8d9);
+    text-decoration: none;
+  }  
+
+#delok {
+    -webkit-border-radius: 28;
+    -moz-border-radius: 28;
+    border-radius: 28px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 12px;
+    background: #58c9a9;
+    padding: 5px 10px 5px 10px;
+    text-decoration: none;
+    border-style: none;
+  }
+  
+#delok:hover {
+    background: #8aff66;
     text-decoration: none;
   }
