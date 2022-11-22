@@ -23,7 +23,7 @@
         <div id="tabd">
             <h1 id="nd">no data</h1>
             <table id="tabm">
-                <tr >
+                <tr id="sh1">
                     <th>ReservatioID</th>
                     <th>CarName</th>
                     <th>CarID</th>
@@ -33,25 +33,28 @@
                     <th>To(Date)</th>
                     <th>DepartureLocation</th>
                     <th>ChildPassenger</th>
+                    
                     <th>ReturnLocation</th>
                     <th>ReturnDate</th>
                 </tr> 
             </table>
             <table id="tabs">
-                <tr >
-                    <th>ReservatioID</th>
-                    <th>CarName</th>
-                    <th>CarID</th>
-                    <th>FirstName</th>
-                    <th>LastName</th>
-                    <th>From(Date)</th>
-                    <th>To(Date)</th>
-                    <th>DepartureLocation</th>
-                    <th>ChildPassenger</th>
-                    <th>ReturnLocation</th>
-                    <th>ReturnDate</th>
+                <tr id="sh">
+                    <th class="sm">ReservationID</th>
+                    <th class="sm">CarName</th>
+                    <th class="sm">CarID</th>
+                    <th class="sm">FirstName</th>
+                    <th class="sm">LastName</th>
+                    <th class="sm">From(Date)</th>
+                    <th class="sm">To(Date)</th>
+                    <th class="sm">DepartureLocation</th>
+                    <th class="sm">ChildPassenger</th>
+                    <th class="sm">ReturnLocation</th>
+                    <th class="sm">ReturnDate</th>
                 </tr> 
+                
             </table>
+            <p id="ndf">No Data Found</p>
         </div>    
         <div id="pop">
             <table id="popt">
@@ -86,7 +89,14 @@
                 </tr>
                 <tr>
                     <td><label>Departure location</label></td>
-                    <td class="ti" ><input id="dl" type="text"></td>
+                    <td class="ti" >
+                        <select id="dl" name="dlocs">
+                                <option></option>
+                                <option>Mumbai</option>
+                                <option>Chennai</option>
+                                <option>Hyderabad</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td><label>Child Passenger</label></td>
@@ -103,11 +113,12 @@
                     <td class="ti">
                         <select id="rl" name="locs">
                             <option></option>
-                            <option >TX</option>
+                            <option>TX</option>
                             <option>LA</option>
                             <option>Bangaluru</option>
                             <option>Mysuru</option>
                             <option>Berlin</option>
+                            <option id="us" >United States</option>
                         </select>
                     </td>
                 </tr>
@@ -130,7 +141,7 @@
         <div id="errPop">
             <h3 id="erm">err msg</h3>
             <button id="okb" onclick="closeErpop()">ok</button>
-        </div>
+        </div>  
     </div>
     
     <script src="rm.js"></script>

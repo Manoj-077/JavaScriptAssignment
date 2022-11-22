@@ -176,6 +176,14 @@ a{
 #dok{
     color:  black;
 }
+#ndf{
+    visibility: hidden;
+    bottom : 0;
+}
+.sm,#sh{
+    border-style: groove;
+    
+}
 
 .btn1,#delcancel {
     background: #ff0000;

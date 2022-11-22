@@ -99,11 +99,10 @@ showData();
 function deletePopCancel(){
     document.getElementById('deletPop').style.visibility = 'hidden';
 }
-function delet(y){
-    
-    deletPop();
-    
-}
+/*function delet(y){  
+    deletPop();  
+}*/
+
 function deletPop(y){
     document.getElementById('deletPop').style.visibility = 'visible';
     document.getElementById('delok').addEventListener('click',function(){
@@ -120,6 +119,7 @@ function edit(e){
     showPop();
     tp = JSON.parse(localStorage.getItem(e1));
     document.getElementById("ri").value = tp.reservationID;
+    document.getElementById('ri').setAttribute("disabled", false);
     document.getElementById("cn").value = tp.carName;
     document.getElementById("ci").value = tp.carID;
     document.getElementById("fn").value = tp.firstName;
@@ -149,6 +149,47 @@ function edit(e){
         document.getElementsByClassName("of")[1].style.visibility = "hidden";
     });
     
+    document.getElementById('sub1').addEventListener("click",function(j){
+        var edit = localStorage.getItem(e1);
+        var edit1 = JSON.parse(edit);
+        edit1.reservationID = document.getElementById("ri").value;
+        edit1.carName = document.getElementById("cn").value;
+        edit1.carID = document.getElementById("ci").value;
+        edit1.firstName = document.getElementById("fn").value;
+        edit1.lastName = document.getElementById("ln").value;
+        edit1.fromD = document.getElementById("fd").value;
+        edit1.toD = document.getElementById("td").value;
+        edit1.departureLocation = document.getElementById("dl").value;
+        if(ci<1 || ci==" " || ci.length==0){
+            errPop("invalid car id")
+            j.preventDefault();
+        }
+        else if(fn[0]==" " || fn.length==0){
+            errPop("invalid first name");
+            j.preventDefault();
+        }
+        else if(ln[0]==" " || ln.length==0){
+            errPop("invalid last name");
+            j.preventDefault();
+        }
+        else if(td<fd || td=="" || fd=="" ){
+            errPop("invalid from and to date");
+            j.preventDefault();
+        }
+        else if(document.getElementById("ir1").checked == true){
+            edit1.returnLocation = document.getElementById('rl').value;
+            if(rd<fd || rd>td){
+                errPop("invalid return");
+                j.preventDefault();
+            }
+            else{
+                edit1.returnDate = document.getElementById('rd').value;
+            } 
+        }
+        localStorage.setItem(e1,JSON.stringify(edit1));
+        cancelPop();
+        location.reload();
+    })
     
 }
 function searchD(){
@@ -159,7 +200,7 @@ function searchD(){
         }
     }
     if(b1==1){
-    
+        
         so = JSON.parse(localStorage.getItem(s));
         row = document.getElementById("tabs").insertRow(1);
         c1 = row.insertCell(0)
@@ -191,10 +232,16 @@ function searchD(){
         document.getElementById("tabm").style.visibility = "hidden";
         document.getElementById("tabs").style.visibility = "visible";
         borderAdder();
-
+        document.getElementById("ndf").style.visibility = "hidden";
+        
     }
     else{
-        errPop("No data found in the record")
+        document.getElementById("tabm").style.visibility = "hidden";
+        document.getElementById("sh").style.visibility = "visible";
+        document.getElementById("tabs").style.visibility = "visible";
+        document.getElementById("ndf").style.visibility = "visible";
+        document.getElementById('ndf').style.position = "relative";
+        document.getElementById('ndf').style.bottom = "210px"
         document.getElementById("sc").style.visibility = "hidden";
 
     }
@@ -298,7 +345,7 @@ document.getElementById('sub1').addEventListener('click',function(c){
     fd = document.getElementById("fd").value;
     td = document.getElementById("td").value;
     dl = document.getElementById("dl").value;
-
+    
     ae = ri in localStorage; 
     if(ri<1 || ri==" " || ae == true || ri.length==0){     // validations
         errPop("invalid reservation id")
@@ -370,7 +417,14 @@ function getData(){
             errPop("cannot store data as mandatory inputs are empty")
         } 
         else{   
+        if(rl=='United States'){
+            rl = 'united States';
+        }   
+        
         obj = new Data(ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd);
+        if(obj.rl=='United States'){
+            obj.rl = 'united States';
+        }  
         jobj = JSON.stringify(obj);
         localStorage.setItem(ri,jobj);
         }
@@ -383,3 +437,4 @@ function getData(){
     }    
 }
 
+document.getElementById("us").value = "US(United States)";
