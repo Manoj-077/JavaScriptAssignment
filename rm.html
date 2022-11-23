@@ -33,7 +33,7 @@
                     <th>To(Date)</th>
                     <th>DepartureLocation</th>
                     <th>ChildPassenger</th>
-                    
+                    <th>IsReturn</th>
                     <th>ReturnLocation</th>
                     <th>ReturnDate</th>
                 </tr> 
@@ -49,42 +49,43 @@
                     <th class="sm">To(Date)</th>
                     <th class="sm">DepartureLocation</th>
                     <th class="sm">ChildPassenger</th>
+                    <th class="sm">IsReturn</th>
                     <th class="sm">ReturnLocation</th>
                     <th class="sm">ReturnDate</th>
                 </tr> 
                 
             </table>
-            <p id="ndf">No Data Found</p>
+            <p id="ndf"><span id="ndf1">No Data Found</span></p>
         </div>    
         <div id="pop">
             <table id="popt">
                 <a href="rm.html"><button class="btn1" id="btn11" onclick=cancelPop() >x</button></a>
                 <tr>
-                    <td><label>Reservation ID<span>*</span></label></td>
+                    <td><label>Reservation ID<span class="star">*</span></label></td>
                     <td class="ti" ><input id="ri" required type="number"></td>
                 </tr>    
                 <tr>
-                    <td><label>Car Name<span>*</span></label></td>
+                    <td><label>Car Name<span class="star">*</span></label></td>
                     <td class="ti" ><input id="cn" type="text"></td>
                 </tr>
                 <tr>
-                    <td><label>Car ID<span>*</span></label></td>
+                    <td><label>Car ID<span class="star">*</span></label></td>
                     <td class="ti" ><input id="ci" type="number"></td>
                 </tr>
                 <tr>
-                    <td><label>First Name<span>*</span></label></td>
+                    <td><label>First Name<span class="star">*</span></label></td>
                     <td class="ti" ><input id="fn" type="text"></td>
                 </tr>
                 <tr>
-                    <td><label>Last Name<span>*</span></label></td>
+                    <td><label>Last Name<span class="star">*</span></label></td>
                     <td class="ti" ><input id="ln" type="text"></td>
                 </tr>
                 <tr>
-                    <td><label>From(date)<span>*</span></label></td>
+                    <td><label>From(date)<span class="star">*</span></label></td>
                     <td class="ti" ><input id="fd" type="date"></td>
                 </tr>
                 <tr>
-                    <td><label>To(date)<span>*</span></label></td>
+                    <td><label>To(date)<span class="star">*</span></label></td>
                     <td class="ti" ><input id="td" type="date"></td>
                 </tr>
                 <tr>

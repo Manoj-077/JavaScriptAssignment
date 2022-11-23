@@ -14,6 +14,7 @@ function borderAdder(){
             c11.classList.add('tm');
             c12.classList.add('tm');
             c13.classList.add('tm');
+            c14.classList.add('tm');
 }
 
 function showData(){
@@ -41,6 +42,7 @@ function showData(){
             c11 = row.insertCell(10)
             c12 = row.insertCell(11)
             c13 = row.insertCell(12)
+            c14 = row.insertCell(13)
             c1.innerHTML = x2.reservationID;
             c2.innerHTML = x2.carName;
             c3.innerHTML = x2.carID;
@@ -50,10 +52,11 @@ function showData(){
             c7.innerHTML = x2.toD;
             c8.innerHTML = x2.departureLocation;
             c9.innerHTML = x2.childPassenger;
-            c10.innerHTML = x2.returnLocation;
-            c11.innerHTML = x2.returnDate;
-            c12.innerHTML = "<a onclick = deletPop(this)  >delete</a>"
-            c13.innerHTML = "<a onclick = edit(this) >edit</a>"
+            c10.innerHTML = x2.isReturn;
+            c11.innerHTML = x2.returnLocation;
+            c12.innerHTML = x2.returnDate;
+            c13.innerHTML = "<a onclick = deletPop(this)  >delete</a>"
+            c14.innerHTML = "<a onclick = edit(this) >edit</a>"
             borderAdder();
         }
     }
@@ -131,10 +134,11 @@ function edit(e){
         document.getElementById("cp").checked = true;
     } 
     else{
-        
+        document.getElementById("cp").checked = false;
     }
-    if(typeof(tp.returnLocation)=='string'){
-        document.getElementById("ir1").checked = true;
+    
+    if(tp.returnLocation.length> 0){
+        document.getElementById("ir1").checked = true
         document.getElementById("rl").value = tp.returnLocation;
         document.getElementById("rd").value = tp.returnDate;
         ret();
@@ -177,6 +181,7 @@ function edit(e){
             j.preventDefault();
         }
         else if(document.getElementById("ir1").checked == true){
+            edit1.isReturn = true;
             edit1.returnLocation = document.getElementById('rl').value;
             if(rd<fd || rd>td){
                 errPop("invalid return");
@@ -185,6 +190,17 @@ function edit(e){
             else{
                 edit1.returnDate = document.getElementById('rd').value;
             } 
+        }
+        else{
+            edit1.isReturn = false;
+            edit1.returnLocation = "";
+            edit1.returnDate = "";
+        }
+        if(document.getElementById('cp').checked == true){
+            edit1.childPassenger = 'yes';
+        }
+        else{
+            edit1.childPassenger = 'no';
         }
         localStorage.setItem(e1,JSON.stringify(edit1));
         cancelPop();
@@ -216,23 +232,43 @@ function searchD(){
         c11 = row.insertCell(10)
         c12 = row.insertCell(11)
         c13 = row.insertCell(12)
-        c1.innerHTML = so.reservationID;
-        c2.innerHTML = so.carName;
-        c3.innerHTML = so.carID;
-        c4.innerHTML = so.firstName;
-        c5.innerHTML = so.lastName;
-        c6.innerHTML = so.fromD;
-        c7.innerHTML = so.toD;
-        c8.innerHTML = so.departureLocation;
-        c9.innerHTML = so.childPassenger;
-        c10.innerHTML = so.returnLocation;
-        c11.innerHTML = so.returnDate;
-        c12.innerHTML = "<a onclick = deletPop(this)  >delete</a>";
-        c13.innerHTML = "<a onclick = edit(this) >edit</a>"
-        document.getElementById("tabm").style.visibility = "hidden";
-        document.getElementById("tabs").style.visibility = "visible";
-        borderAdder();
-        document.getElementById("ndf").style.visibility = "hidden";
+        c14 = row.insertCell(13)
+        try{
+            c1.innerHTML = so.reservationID;
+            c2.innerHTML = so.carName;
+            c3.innerHTML = so.carID;
+            c4.innerHTML = so.firstName;
+            c5.innerHTML = so.lastName;
+            c6.innerHTML = so.fromD;
+            c7.innerHTML = so.toD;
+            c8.innerHTML = so.departureLocation;
+            c9.innerHTML = so.childPassenger;
+            c10.innerHTML = so.isReturn;
+            c11.innerHTML = so.returnLocation;
+            c12.innerHTML = so.returnDate;
+            c13.innerHTML = "<a onclick = deletPop(this)  >delete</a>"
+            c14.innerHTML = "<a onclick = edit(this) >edit</a>"
+            document.getElementById("tabm").style.visibility = "hidden";
+            document.getElementById("tabs").style.visibility = "visible";
+            borderAdder();
+            document.getElementById("ndf").style.visibility = "hidden";
+        }
+        catch(jk){
+            document.getElementById("tabm").style.visibility = "hidden";
+            document.getElementById("sh").style.visibility = "visible";
+            document.getElementById("tabs").style.visibility = "visible";
+            document.getElementById("ndf").style.visibility = "visible";
+            document.getElementById('ndf').style.position = "absolute";
+            document.getElementById('ndf').style.top = "30px";
+            document.getElementById('ndf').style.left = "0px";
+            document.getElementById('ndf').style.right = "0px";
+            document.getElementById('ndf').style.height = '30px';
+            document.getElementById('ndf').style.borderWidth = '2px';
+            document.getElementById('ndf').style.paddingTop = '5px';
+            document.getElementById('ndf').style.borderStyle = "groove";
+            document.getElementById('ndf').style.width = "100px";
+            document.getElementById("sc").style.visibility = "hidden";
+        }
         
     }
     else{
@@ -240,8 +276,9 @@ function searchD(){
         document.getElementById("sh").style.visibility = "visible";
         document.getElementById("tabs").style.visibility = "visible";
         document.getElementById("ndf").style.visibility = "visible";
-        document.getElementById('ndf').style.position = "relative";
-        document.getElementById('ndf').style.bottom = "210px"
+        document.getElementById('ndf').style.position = "absolute";
+        //document.getElementById('ndf').style.top = "20px";
+        //document.getElementById('ndf').style.left = "720px";
         document.getElementById("sc").style.visibility = "hidden";
 
     }
@@ -318,7 +355,7 @@ function closeErpop(){
     }*/
 }
 
-function Data(reservationID,carName,carID,firstName,lastName,fromD,toD,departureLocation,childPassenger,returnLocation,returnDate){
+function Data(reservationID,carName,carID,firstName,lastName,fromD,toD,departureLocation,childPassenger,isReturn,returnLocation,returnDate){
     this.reservationID = reservationID;
     this.carName = carName;
     this.carID = carID;
@@ -328,6 +365,7 @@ function Data(reservationID,carName,carID,firstName,lastName,fromD,toD,departure
     this.toD = toD;
     this.departureLocation = departureLocation;
     this.childPassenger = childPassenger;
+    this.isReturn = isReturn;
     this.returnLocation = returnLocation;
     this.returnDate = returnDate;
 }
@@ -399,8 +437,8 @@ function getData(){
             } 
         }
         else{
-            rl = false;
-            rd = false;
+            rl = "";
+            rd = "";
             
         }
         
@@ -416,12 +454,16 @@ function getData(){
         if(ri =="" || cn=="" || ci==""){
             errPop("cannot store data as mandatory inputs are empty")
         } 
-        else{   
-        if(rl=='United States'){
-            rl = 'united States';
-        }   
+        else{ 
+            var radio;  
+        if(document.getElementById('ir1').checked==true){
+            radio = true;
+        }
+        else if(document.getElementById('ir2').checked==true){
+            radio = false;
+        }
         
-        obj = new Data(ri,cn,ci,fn,ln,fd,td,dl,cp,rl,rd);
+        obj = new Data(ri,cn,ci,fn,ln,fd,td,dl,cp,radio,rl,rd);
         if(obj.rl=='United States'){
             obj.rl = 'united States';
         }  
